@@ -73,6 +73,10 @@ function custom_category_template( $template ) {
 
 add_filter( 'template_include', 'custom_category_template', 99 );
 
+/** Woo функции  */
+require_once get_stylesheet_directory() . '/inc/woo/getting_terms.php';
+require_once get_stylesheet_directory() . '/inc/woo/getting_posts.php';
+
 /** SEO функции  */
 require_once get_stylesheet_directory() . '/inc/seo-make-services-desc.php';
 
@@ -118,9 +122,10 @@ function load_products_by_category() {
 				<div class="products__product-image">
 					<?php
 					// Получаем URL изображения товара
-					$image_url = wp_get_attachment_image_url( get_post_thumbnail_id(), 'medium' );
+					$image_id = get_post_thumbnail_id();
 					?>
-					<img src="<?php echo $image_url; ?>" loading="lazy" alt="">
+					<img src="<?= carbonImageData( $image_id )['url']; ?>" loading="lazy"
+					     alt="<?= carbonImageData( $image_id )['alt']; ?>">
 				</div>
 				<div class="products__product-info">
 					<div class="product-info__title">
