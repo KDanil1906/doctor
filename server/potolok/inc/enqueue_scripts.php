@@ -16,7 +16,6 @@ add_action('wp_enqueue_scripts', function () {
 	wp_enqueue_script('potolok-libs-js', get_template_directory_uri() . '/assets/js/libs.min.js', array('jquery'), '3.4', true);
 	wp_enqueue_script('potolok-main-js', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), '3.4', true);
 	wp_enqueue_script( 'potolok-referrer-js', get_template_directory_uri() . '/assets/js/referrer.js', array( 'jquery', 'potolok-main-js' ), '3.4', true );
-	wp_enqueue_script( 'potolok-woo-ajax-product-js', get_template_directory_uri() . '/assets/js/products-woo.js', array( 'jquery'), '3.4', true );
 
 });
 
@@ -43,6 +42,7 @@ function my_template_scripts() {
 		wp_enqueue_style('potolok-formstyler-css', get_template_directory_uri() . '/assets/css/formstyler.min.css', array(), '3.4');
 
 		// подключаем js файл темы
+		wp_enqueue_script( 'potolok-woo-ajax-product-js', get_template_directory_uri() . '/assets/js/products-woo.js', array( 'jquery'), '3.4', true );
 		wp_enqueue_script('potolok-formstyler-js', get_template_directory_uri() . '/assets/js/formstyler.min.js', array('jquery'), '3.4', true);
 		wp_enqueue_script('potolok-selector-js', get_template_directory_uri() . '/assets/js/selector.js', array('jquery'), '3.4', true);
 	}

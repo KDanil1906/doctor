@@ -2,7 +2,6 @@
 
 function getAllNotSeoProducts( $num_posts, $paged ) {
 	$excludes = getIdsWooSeoCats();
-	$excludes = array();
 
 
 	$args = array(

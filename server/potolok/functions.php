@@ -76,6 +76,7 @@ add_filter( 'template_include', 'custom_category_template', 99 );
 /** Woo функции  */
 require_once get_stylesheet_directory() . '/inc/woo/getting_terms.php';
 require_once get_stylesheet_directory() . '/inc/woo/getting_posts.php';
+require_once get_stylesheet_directory() . '/inc/woo/ajax-get-product-for-category.php';
 
 /** SEO функции  */
 require_once get_stylesheet_directory() . '/inc/seo-make-services-desc.php';
@@ -88,71 +89,4 @@ function product_seo() {
 ;
 
 
-//Обработка пагинации товаров
-function load_products_by_category() {
-	$category_id = $_POST['category_id'];
-	$paged       = $_POST['paged'];
-	$args        = array(
-		'post_type'      => 'product',
-		'posts_per_page' => 12,
-		'paged'          => $paged,
-		'tax_query'      => array(
-			array(
-				'taxonomy' => 'product_cat',
-				'field'    => 'term_id',
-				'terms'    => $category_id,
-			),
-		),
-	);
-	$query       = new WP_Query( $args );
 
-//	echo json_encode( $query->posts );
-
-	if ( $query->have_posts() ) {
-		while ( $query->have_posts() ) {
-			$query->the_post();
-
-			// Получаем объект товара
-			$product = wc_get_product( get_the_ID() );
-
-			// Проверяем, есть ли у товара цена и можно ли его купить
-//			if ( $product->is_purchasable() && $product->get_price() !== '' ) {
-			?>
-			<div class="products__product">
-				<div class="products__product-image">
-					<?php
-					// Получаем URL изображения товара
-					$image_id = get_post_thumbnail_id();
-					?>
-					<img src="<?= carbonImageData( $image_id )['url']; ?>" loading="lazy"
-					     alt="<?= carbonImageData( $image_id )['alt']; ?>">
-				</div>
-				<div class="products__product-info">
-					<div class="product-info__title">
-						<?php the_title(); ?>
-					</div>
-					<div class="product-info__price">
-						<?php echo $product->get_price_html(); ?> <span>/ шт.</span>
-					</div>
-
-					<div class="product__link">
-						<a href="<?php echo esc_url( $product->add_to_cart_url() ); ?>" class="btn--no-form"
-						   target="_blank">Купить</a>
-					</div>
-					<a href="<?php echo esc_url( get_permalink() ); ?>" class="product-info__link text-btns__link">
-						Подробнее
-					</a>
-				</div>
-			</div>
-			<?php
-//			}
-		}
-		wp_reset_postdata();
-	}
-
-	wp_reset_postdata();
-	wp_die();
-}
-
-add_action( 'wp_ajax_load_products_by_category', 'load_products_by_category' );
-add_action( 'wp_ajax_nopriv_load_products_by_category', 'load_products_by_category' );

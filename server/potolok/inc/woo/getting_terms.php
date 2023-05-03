@@ -24,5 +24,6 @@ function getIdsWooSeoCats() {
 		}
 	}
 
+	$exclude_ids = array();
 	return $exclude_ids;
 }
