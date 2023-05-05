@@ -102,7 +102,7 @@
 											<div class="ustanovka-box__info-price">
 												<span>Стоимость от:</span>
 												<div class="ustanovka-box__info-coast">
-													<?= $item['potolok-type-price'] ?> руб/м2
+													<?= $item['potolok-type-price'] ?> руб/м<sup>2</sup>
 												</div>
 											</div>
 											<div class="ustanovka-box__info-bnt">
