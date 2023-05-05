@@ -25,7 +25,8 @@ $page_id = isset( $args['page-id'] ) ? $args['page-id'] : get_the_ID();
 							?>
 						</a>
 						<div class="cart-item__image">
-							<a href="<?php echo get_permalink( $post_id ) ?>" class="cart-item__image--inner">
+							<a href="<?php echo get_permalink( $post_id ) ?>"
+							   class="cart-item__image--inner">
 								<?php $image_id = carbon_get_post_meta( $post_id, 'service-general-image' ); ?>
 								<img src="<?php echo carbonImageData( $image_id )['url']; ?>"
 								     alt="<?php echo carbonImageData( $image_id )['alt']; ?>"

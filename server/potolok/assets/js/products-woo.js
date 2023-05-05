@@ -17,19 +17,16 @@ jQuery(document).ready(function ($) {
             paged: 1,
         };
 
-
-
         $product_categories_results.html('<div class="loader"></div>');
         $.post(ajaxurl, data, function (response) {
             $product_categories_results.html(response);
-
             paginationBtnHandler(data, ajaxurl);
 
         });
     }
 
 
-    function paginationBtnHandler (data, url) {
+    function paginationBtnHandler(data, url) {
         $('.woocommerce-pagination a').on('click', function (e) {
             e.preventDefault();
 

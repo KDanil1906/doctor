@@ -7,7 +7,7 @@ $reviews  = carbon_get_theme_option('main-reviews-reviews');
 <section class="voices">
     <div class="container">
         <div class="voices__inner">
-            <div class="title--middle voices__title">
+            <div class="title--small voices__title">
                 <?php echo $title; ?>
             </div>
             <div class="under-middle-title__desc">

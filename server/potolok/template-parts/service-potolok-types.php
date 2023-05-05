@@ -8,7 +8,7 @@
 			$title = $data['potolok-type-title'];
 			if ( $title ):
 				?>
-				<h2 class="title--middle voices__title">
+				<h2 class="title--small voices__title">
 					<?= $title ?>
 				</h2>
 			<?php endif; ?>
@@ -100,7 +100,7 @@
 												<?= $item['potolok-type-desc'] ?>
 											</div>
 											<div class="ustanovka-box__info-price">
-												<span>Цена с установкой</span>
+												<span>Стоимость от:</span>
 												<div class="ustanovka-box__info-coast">
 													<?= $item['potolok-type-price'] ?> руб/м2
 												</div>

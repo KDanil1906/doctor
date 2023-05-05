@@ -7,7 +7,7 @@ $more = carbon_get_theme_option('main-rules-more');
 <section class="benefits">
     <div class="container">
         <div class="benefits__inner">
-            <h2 class="title--middle benefits__title">
+            <h2 class="title--small benefits__title">
                 <?= $title; ?>
             </h2>
             <div class="carts__items-wrapper">

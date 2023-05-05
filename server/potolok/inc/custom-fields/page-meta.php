@@ -12,16 +12,12 @@ require_once get_stylesheet_directory() . '/inc/custom-fields/ServiceFieldsCreat
 
 $service_fields = new ServiceFieldsCreator();
 
-//get_pr( $service_fields->getFields() );
-
 Container::make('post_meta', 'Контент на страничке')
     ->where('post_type', '=', 'page')
     ->where('post_id', 'IN', array(12))
     ->add_tab('"Welcome" блок', array(
         Field::make('rich_text', 'main-welcome-title', 'Заголовок')
             ->set_width(50),
-//        Field::make('rich_text', 'main-welcome-title-mobile', 'Подзаголовок')
-//            ->set_width(50),
         Field::make('image', 'main-welcome-image', 'Изображение')
             ->set_width(50),
         Field::make('complex', 'main-welcome-title-items', 'Пункты')
@@ -45,8 +41,6 @@ Container::make('post_meta', 'Контент на страничке')
         Field::make('rich_text', 'main-services-title', 'Заголовок')
             ->set_width(50),
     ))
-
-
     ->add_tab('Заключение', array(
 
         Field::make('text', 'main-more-title', 'Заголовок')

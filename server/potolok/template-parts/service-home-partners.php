@@ -6,7 +6,7 @@ $clients_logo = carbon_get_theme_option( 'main-trust-logos' );
 
 <section class="clients">
 	<div class="container">
-		<div class="title--middle clients__title">
+		<div class="title--small clients__title">
 			<?php echo $title; ?>
 		</div>
 		<div class="under-middle-title__desc">

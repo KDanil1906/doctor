@@ -28,7 +28,7 @@ echo get_template_part( 'template-parts/breadcrumbs' );
 		</div>
 		<div id="product-categories-filter">
 			<select id="product-categories-dropdown">
-				<option value="">Все категории</option>
+				<option value="all">Все категории</option>
 				<!--				<option value="">--><?php //getWooCatsForSelector();?><!--</option>-->
 				<?php
 
@@ -60,23 +60,25 @@ echo get_template_part( 'template-parts/breadcrumbs' );
 							<div class="product-info__title">
 								<?php the_title(); ?>
 							</div>
-							<div class="product-info__price">
-								<?php echo $product->get_price_html(); ?> <span>/ шт.</span>
-							</div>
+							<div class="product-info__coast-box">
+								<div class="product-info__price">
+									<?php echo $product->get_price_html(); ?> <span>/ шт.</span>
+								</div>
 
-							<div class="product__link">
-								<a href="<?php echo esc_url( $product->add_to_cart_url() ); ?>" class="btn--no-form"
-								   target="_blank">Купить</a>
+								<div class="product__link">
+									<a href="<?php echo esc_url( $product->add_to_cart_url() ); ?>" class="btn--no-form"
+									   target="_blank">Купить</a>
+								</div>
+								<a href="#" class="product-info__link text-btns__link">
+									Подробнее
+								</a>
 							</div>
-							<a href="#" class="product-info__link text-btns__link">
-								Подробнее
-							</a>
 						</div>
 					</div>
 				<?php
 				endforeach;
 			endif; ?>
-			<?=  get_template_part( 'template-parts/pagination', '', array( 'query' => $query ) ); ?>
+			<?= get_template_part( 'template-parts/pagination', '', array( 'query' => $query ) ); ?>
 		</div>
 
 

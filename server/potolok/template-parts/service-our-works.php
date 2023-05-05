@@ -5,7 +5,7 @@
 		<div class="works__inner">
 			<div class="works-text">
 				<h2 class="sinlge__title">
-					<?php echo $data['our-works-title'] ?>
+					<?= $data['our-works-title'] ?>
 				</h2>
 				<?php if ( $data['our-works-desc'] ): ?>
 					<div class="single__desc">
@@ -42,7 +42,7 @@
 
 								<div class="works-item__btns">
 									<button class="text-btns__link-btn btn">
-										<?php echo __( 'Заказать', 'potolok' ) ?>
+										<?php echo __( 'Хочу такой же', 'potolok' ) ?>
 									</button>
 								</div>
 							</div>
