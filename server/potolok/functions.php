@@ -81,6 +81,9 @@ require_once get_stylesheet_directory() . '/inc/woo/ajax-get-product-for-categor
 /** SEO функции  */
 require_once get_stylesheet_directory() . '/inc/seo-make-services-desc.php';
 
+/** Ajax forms  */
+require_once get_stylesheet_directory() . '/inc/form-ajax.php';
+
 add_action( 'carbon_fields_register_fields', 'product_seo' );
 function product_seo() {
 	require_once get_stylesheet_directory() . '/inc/seo-set-product-desc.php';

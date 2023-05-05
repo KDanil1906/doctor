@@ -1,6 +1,7 @@
 /** Form mask start */
 import {mutedBody, clickOverElement} from "./functions.js";
 import {form_btns} from "./vars.js";
+import {getForm} from "./embed-form-ajax.js";
 
 function initFormInput() {
     // jQuery('input[type=tel]').mask('+9-999-999-99-99', {placeholder: "+7 ___ ___ __ __"})
@@ -27,6 +28,7 @@ function initFormInput() {
 
     jQuery('input[type=tel]').mask('0-000-000-00-00', options);
 }
+
 /** Form mask end */
 
 function handlingPopupShow() {
@@ -53,7 +55,6 @@ function handlingPopupShow() {
         }
     })
 }
-
 
 
 export {initFormInput, handlingPopupShow};
