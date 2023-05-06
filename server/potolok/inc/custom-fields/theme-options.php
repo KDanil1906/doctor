@@ -117,10 +117,6 @@ function crb_attach_theme_options() {
 
 	Container::make( 'theme_options', __( 'Общие блоки', 'potolok' ) )
 	         ->set_icon( 'dashicons-welcome-widgets-menus' )
-//	         ->add_tab( 'Уведомление о Cookie', array(
-//		         Field::make( 'rich_text', 'cookie-notif', __( 'Содержание уведомления' ) )
-//		              ->set_width( 100 ),
-//	         ) )
              ->add_tab( 'Отправьте фото', array(
 			Field::make( 'separator', 'send-photo-sep-both', '' )
 			     ->set_help_text( 'общие настройки' )

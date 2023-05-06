@@ -117,6 +117,33 @@ class ServiceFieldsCreator {
 					     'value' => 'home-rules',
 				     )
 			     ) ),
+			Field::make( 'complex', 'service-home-rules-items', 'Индивидуальные правила для страницы' )
+			     ->set_help_text( 'Данные правила работают замещением. Если передать тут хотя бы 1 индивидуальное правило, то все "общие" перестанут отображаться. Данные правила при использовании в индивидуальном режиме требуется заполнять все.' )
+			     ->set_conditional_logic( array(
+				     array(
+					     'field' => 'service-blocks-wrap-select',
+					     'value' => 'home-rules',
+				     )
+			     ) )
+			     ->set_collapsed( true )
+			     ->setup_labels(
+				     array(
+					     'plural_name'   => 'Пункты',
+					     'singular_name' => 'Пункт',
+				     )
+			     )
+			     ->add_fields( array(
+				     Field::make( 'text', 'service-home-rules-item-title', 'Заголовок' )
+				          ->set_width( 100 ),
+				     Field::make( 'rich_text', 'service-home-rules-item-desc', 'Содержание пункта' )
+				          ->set_width( 100 ),
+			     ) )
+			     ->set_header_template( '
+                <% if (service_home_rules_item_title) { %>
+                    <%- service_home_rules_item_title %>
+                <% } %>
+            ' ),
+			Field::make( 'rich_text', 'service-home-rules-item-more', 'Послесловие' ),
 		);
 	}
 
@@ -414,7 +441,32 @@ class ServiceFieldsCreator {
 					     'field' => 'service-blocks-wrap-select',
 					     'value' => 'send-photo',
 				     )
-			     ) )
+			     ) ),
+			Field::make( 'text', 'send-photo-left-title', __( 'Индивидуальный заголовок левой части' ) )
+			     ->set_help_text( 'Если данное поле не заполнять, то заголовок будет взят с настроек "общие блоки"' )
+			     ->set_conditional_logic( array(
+				     array(
+					     'field' => 'service-blocks-wrap-select',
+					     'value' => 'send-photo',
+				     )
+			     ) ),
+			Field::make( 'text', 'send-photo-right-title', __( 'Индивидуальный заголовок правой части' ) )
+			     ->set_help_text( 'Если данное поле не заполнять, то заголовок будет взят с настроек "общие блоки"' )
+			     ->set_conditional_logic( array(
+				     array(
+					     'field' => 'service-blocks-wrap-select',
+					     'value' => 'send-photo',
+				     )
+			     ) ),
+			Field::make( 'text', 'send-photo-title-mobile', __( 'Индивидуальный заголовок мобильной версии' ) )
+			     ->set_help_text( 'Если данное поле не заполнять, то заголовок будет взят с настроек "общие блоки"' )
+			     ->set_conditional_logic( array(
+				     array(
+					     'field' => 'service-blocks-wrap-select',
+					     'value' => 'send-photo',
+				     )
+			     ) ),
+
 		);
 	}
 

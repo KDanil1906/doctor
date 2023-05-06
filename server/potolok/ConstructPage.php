@@ -16,11 +16,6 @@ class ConstructPage {
 				continue;
 			}
 
-			if ($block['service-blocks-wrap-select'] == 'send-photo') {
-				echo get_template_part('template-parts/service', 'send-photo');
-				continue;
-			}
-
 			if ($block['service-blocks-wrap-select'] == 'how-we-work') {
 				echo get_template_part('template-parts/service', 'how-we-work');
 				continue;
