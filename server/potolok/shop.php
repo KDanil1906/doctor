@@ -29,7 +29,6 @@ echo get_template_part( 'template-parts/breadcrumbs' );
 		<div id="product-categories-filter">
 			<select id="product-categories-dropdown">
 				<option value="all">Все категории</option>
-				<!--				<option value="">--><?php //getWooCatsForSelector();?><!--</option>-->
 				<?php
 
 				// Получаем список всех категорий товаров
@@ -46,40 +45,27 @@ echo get_template_part( 'template-parts/breadcrumbs' );
 			<?php
 			$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 			$query = getAllNotSeoProducts( 12, $paged );
-			if ( $query->have_posts() ):
-				foreach ( $query->posts as $item ):
+			if ( $query->have_posts() ) {
+				foreach ( $query->posts as $item ) {
 					$query->the_post();
-					?>
-					<div class="products__product">
-						<div class="products__product-image">
-							<?php $image_id = get_post_thumbnail_id(); ?>
-							<img src="<?= carbonImageData( $image_id )['url']; ?>" loading="lazy"
-							     alt="<?= carbonImageData( $image_id )['alt']; ?>">
-						</div>
-						<div class="products__product-info">
-							<div class="product-info__title">
-								<?php the_title(); ?>
-							</div>
-							<div class="product-info__coast-box">
-								<div class="product-info__price">
-									<?php echo $product->get_price_html(); ?> <span>/ шт.</span>
-								</div>
 
-								<div class="product__link">
-									<a href="<?php echo esc_url( $product->add_to_cart_url() ); ?>" class="btn--no-form"
-									   target="_blank">Купить</a>
-								</div>
-								<a href="#" class="product-info__link text-btns__link">
-									Подробнее
-								</a>
-							</div>
-						</div>
-					</div>
-				<?php
-				endforeach;
-			endif; ?>
-			<?= get_template_part( 'template-parts/pagination', '', array( 'query' => $query ) ); ?>
+					$params = array(
+						'image_id'     => get_post_thumbnail_id(),
+						'product_name' => get_the_title(),
+						'price'        => $product->get_price_html(),
+						'buy_link'     => esc_url( $product->add_to_cart_url() ),
+					);
+
+					echo get_template_part( 'template-parts/product', 'cart', $params );
+
+				}
+				wp_reset_postdata();
+			}
+
+			echo get_template_part( 'template-parts/pagination', '', array( 'query' => $query ) );
+			?>
 		</div>
+
 	</div>
 </section>
 <?php get_footer(); ?>

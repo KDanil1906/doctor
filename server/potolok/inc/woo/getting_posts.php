@@ -20,3 +20,19 @@ function getAllNotSeoProducts( $num_posts, $paged ) {
 
 	return new WP_Query( $args );
 }
+
+function getPostsForMainPage () {
+	$args = array(
+		'post_type'      => 'product',
+		'posts_per_page' => 3,
+		'meta_query'     => array(
+			array(
+				'key'   => '_product-main-page',
+				'value' => 'yes',
+			),
+		),
+	);
+
+	return new WP_Query( $args );
+
+}

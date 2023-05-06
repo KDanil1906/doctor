@@ -75,66 +75,7 @@ if ( $product ) {
 
 <?= get_template_part( '/template-parts/service', 'home-dzen' ) ?>
 
-<!--<section class="products">-->
-<!--    <div class="container">-->
-<!--        <div class="title--middle clients__title">-->
-<!--            Комплектующие-->
-<!--        </div>-->
-<!--        <div class="under-middle-title__desc">-->
-<!--            Если хотите сделать ремонт самостоятельно-->
-<!--        </div>-->
-<!--        <div class="products__items-wrap">-->
-<!--            <div class="products__product">-->
-<!--                <div class="products__product-image">-->
-<!--                    <img src="./images/webp_image/main_product_1.webp" loading="lazy" alt="">-->
-<!--                </div>-->
-<!--                <div class="products__product-info">-->
-<!--                    <div class="product-info__title">-->
-<!--                        Потолочный светильник 20th c.Factory Filament Metal-->
-<!--                    </div>-->
-<!--                    <div class="product-info__price">-->
-<!--                        7200 ₽ <span>/ шт.</span>-->
-<!--                    </div>-->
-<!--                    <a href="#" class="product-info__link text-btns__link">-->
-<!--                        Подробнее-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="products__product">-->
-<!--                <div class="products__product-image">-->
-<!--                    <img src="./images/webp_image/main_product_2.webp" loading="lazy" alt="">-->
-<!--                </div>-->
-<!--                <div class="products__product-info">-->
-<!--                    <div class="product-info__title">-->
-<!--                        Потолочный светильник 20th c.Factory Filament Metal-->
-<!--                    </div>-->
-<!--                    <div class="product-info__price">-->
-<!--                        7200 ₽ <span>/ шт.</span>-->
-<!--                    </div>-->
-<!--                    <a href="#" class="product-info__link text-btns__link">-->
-<!--                        Подробнее-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="products__product">-->
-<!--                <div class="products__product-image">-->
-<!--                    <img src="./images/webp_image/main_product_3.webp" loading="lazy" alt="">-->
-<!--                </div>-->
-<!--                <div class="products__product-info">-->
-<!--                    <div class="product-info__title">-->
-<!--                        Потолочный светильник 20th c.Factory Filament Metal-->
-<!--                    </div>-->
-<!--                    <div class="product-info__price">-->
-<!--                        7200 ₽ <span>/ шт.</span>-->
-<!--                    </div>-->
-<!--                    <a href="#" class="product-info__link text-btns__link">-->
-<!--                        Подробнее-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
+<?= get_template_part( 'template-parts/home', 'products' ); ?>
 
 <section class="more">
 	<div class="container">
