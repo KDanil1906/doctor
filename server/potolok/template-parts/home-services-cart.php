@@ -80,7 +80,7 @@ $page_id = isset( $args['page-id'] ) ? $args['page-id'] : get_the_ID();
 								<?php endif; ?>
 							</div>
 							<div class="cart-item__btns">
-								<button class="cart-item__btn btn">
+								<button class="cart-item__btn btn" type="button" formaction="#">
 									<?php echo __( 'Оставить заявку', 'potolok' ) ?>
 								</button>
 								<a href="<?php echo get_permalink( $post_id ) ?>"

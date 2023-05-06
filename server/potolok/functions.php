@@ -81,6 +81,9 @@ require_once get_stylesheet_directory() . '/inc/woo/ajax-get-product-for-categor
 /** SEO функции  */
 require_once get_stylesheet_directory() . '/inc/seo-make-services-desc.php';
 
+/** Формирование контента из произвольных полей  */
+require_once get_stylesheet_directory() . '/inc/turbo/main-content-routing.php';
+
 /** Ajax forms  */
 require_once get_stylesheet_directory() . '/inc/form-ajax.php';
 
