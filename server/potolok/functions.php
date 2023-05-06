@@ -89,7 +89,6 @@ function product_seo() {
 	require_once get_stylesheet_directory() . '/inc/seo-set-product-desc.php';
 }
 
-;
 
 
 

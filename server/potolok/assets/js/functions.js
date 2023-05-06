@@ -1,4 +1,5 @@
 import {menus} from "./vars.js";
+import {checkAjaxForm} from "./form.js";
 
 function mutedBody() {
     let checkOpened = false;
@@ -46,6 +47,12 @@ function clickOverElement(el, btn) {
             if (!thatBtn.is(e.target) && !thatEl.is(e.target) && thatEl.has(e.target).length === 0 && thatBtn.has(e.target).length === 0) {
                 let classes = jQuery(thatEl).attr('class').split(' ');
                 classes.forEach(function (item) {
+
+                    if (checkAjaxForm(item)) {
+                        jQuery(thatEl).remove()
+                        jQuery('#timeless-wpforms').remove()
+                    }
+
                     if (~item.indexOf("--opened")) {
                         jQuery(thatEl).removeClass(item)
                     }

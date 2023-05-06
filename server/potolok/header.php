@@ -16,6 +16,8 @@
 </head>
 <body>
 
+
+
 <header class="header">
 	<a href="<?php echo home_url(); ?>" class="header__logo">
 		<?php $logo_id = carbon_get_theme_option( 'settings-logo-header' ) ?>
@@ -63,3 +65,4 @@
 		<a href="tel:<?php echo formatPhone( $phone ); ?>"><?php echo phoneDecorate( $phone ); ?></a>
 	</div>
 </header>
+

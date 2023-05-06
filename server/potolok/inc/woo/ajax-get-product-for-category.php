@@ -62,7 +62,7 @@ function load_products_by_category() {
 						<a href="<?php echo esc_url( $product->add_to_cart_url() ); ?>" class="btn--no-form"
 						   target="_blank">Купить</a>
 					</div>
-					<a href="<?php echo esc_url( get_permalink() ); ?>" class="product-info__link text-btns__link">
+					<a href="#" class="product-info__link text-btns__link">
 						Подробнее
 					</a>
 					</div>

@@ -3,7 +3,7 @@
 
 function load_form() {
 	$form = $_POST['form'];
-
+	echo '<script id="timeless-wpforms" type="text/javascript" src="' . plugins_url( 'wpforms/assets/js/wpforms.js' ) . '"></script>';
 	echo get_template_part( '/inc/form', $form );
 }
 

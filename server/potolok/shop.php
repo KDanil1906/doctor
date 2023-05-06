@@ -80,12 +80,6 @@ echo get_template_part( 'template-parts/breadcrumbs' );
 			endif; ?>
 			<?= get_template_part( 'template-parts/pagination', '', array( 'query' => $query ) ); ?>
 		</div>
-
-
 	</div>
 </section>
-
-
-
-
 <?php get_footer(); ?>

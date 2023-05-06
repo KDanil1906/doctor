@@ -26,7 +26,8 @@ jQuery(document).ready(function ($) {
     initSliders();
     initHeaderHandling();
     // galleryShowMoreBtn();
-    handlingPopupShow()
+    handlingPopupShow();
+    // handlingAjaxPopupShow();
     runLinksInit();
     infoCoockie();
     initPorolokTypesBlock();

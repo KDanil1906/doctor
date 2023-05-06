@@ -1,28 +1,23 @@
 
 let menus = [
-    jQuery('.footer__nav-links'),
-    jQuery('.header__nav-links'),
-    jQuery('.form'),
-    jQuery('.measurement__form'),
-    jQuery('.tab-item'),
-    jQuery('.welcome-service__top-utp'),
+    '.footer__nav-links',
+    '.header__nav-links',
+    '.form',
+    '.measurement__form',
+    '.tab-item',
+    '.welcome-service__top-utp',
+    '.product-form--ajax',
+    '.loader--opened',
 ];
 
-let ajax_menus = [
-    jQuery('.product-form--ajax'),
-]
 
 const form_btns = new Map([
-    [jQuery('.utp-btn__mobile'), 'welcome-service__top-utp'],
-    [jQuery('.btn'), 'form'],
-    [jQuery('.cart-btn'), 'form'],
-    [jQuery('.measuring-form'), 'measurement__form'],
-    [jQuery('.footer__nav-links-close'), 'footer__nav-links'],
-
+    ['.utp-btn__mobile', 'welcome-service__top-utp'],
+    ['.btn', 'form'],
+    ['.cart-btn', 'form'],
+    ['.measuring-form', 'measurement__form'],
+    ['.footer__nav-links-close', 'footer__nav-links'],
+    ['.product-info__link', 'product-form--ajax'],
 ]);
 
-let ajax_btns = [
-    [jQuery('.product-info__link'), 'product-form--ajax'],
-]
-
-export {menus, form_btns, ajax_btns, ajax_menus};
+export {menus, form_btns};
