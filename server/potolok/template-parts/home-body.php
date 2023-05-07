@@ -1,5 +1,5 @@
 <?php
-$turbo = $args['turbo'] ?? false;; ?>
+$turbo = $args['turbo'] ?? false; ?>
 
 <?php $home_id     = get_option( 'page_on_front' );
 $title             = carbon_get_post_meta( $home_id, 'main-welcome-title' );
@@ -11,6 +11,8 @@ if ( $product ) {
 	$title               = getProductTitle( $product_id );
 	$welcome_inner_class = 'welcome__inner--seo-title';
 }
+
+
 ?>
 	<section class="welcome">
 		<?php $welcome_bgi = carbon_get_post_meta( $home_id, 'main-welcome-image' ); ?>

@@ -1,4 +1,9 @@
-<?php $data = $args['data'] ?>
+<?php
+
+$data  = $args['data'] ?? false;
+$turbo = $args['turbo'] ?? false;
+
+?>
 
 <secrion class="works">
 	<div class="container">
@@ -41,9 +46,11 @@
 								</div>
 
 								<div class="works-item__btns">
-									<button class="text-btns__link-btn btn">
-										<?php echo __( 'Хочу такой же', 'potolok' ) ?>
-									</button>
+									<?php if ( !$turbo ): ?>
+										<button class="text-btns__link-btn btn">
+											<?php echo __( 'Хочу такой же', 'potolok' ) ?>
+										</button>
+									<?php endif; ?>
 								</div>
 							</div>
 							<?php if ( $work['our-works-items-item-images'] ): ?>

@@ -3,20 +3,31 @@
 Template Name: Услуги
 Template Post Type: page
 */
+
+$turbo = $args['turbo'] ?? false;
+
 require_once get_template_directory() . '/ConstructPage.php';
 $id = get_the_ID();
 global $product;
 ?>
 
 <?php
-if ( $product ) {
-	get_header( 'seo' );
-} else {
-	get_header();
+
+if ( ! $turbo ) {
+	if ( $product ) {
+		get_header( 'seo' );
+	} else {
+		get_header();
+	}
 }
+
 ?>
 
-<?php echo get_template_part( 'template-parts/breadcrumbs' ); ?>
+<?php
+if ( ! $turbo ) {
+	echo get_template_part( 'template-parts/breadcrumbs' );
+}
+?>
 
 <?php
 $title = carbon_get_post_meta( $id, 'service-welcome-title' );
@@ -46,16 +57,17 @@ if ( $product ) {
 /** Вызов welcome блока */
 
 $params = array(
-	'bgi'   => carbon_get_post_meta( $id, 'service-welcome-bgi' ),
-	'image' => carbon_get_post_meta( $id, 'service-welcome-target' ),
-	'title' => $title,
-	'items' => carbon_get_post_meta( $id, 'service-welcome-items-wrap' ),
-	'blur'  => carbon_get_post_meta( $id, 'service-welcome-bgi-blur' ),
-	'general-items'  => carbon_get_post_meta( $id, 'service-welcome-general-items-check' ),
-	'utp-title'  => carbon_get_post_meta( $id, 'service-welcome-utp-title' ),
-	'utp-desc'  => carbon_get_post_meta( $id, 'service-welcome-utp-desc' ),
-	'utp-img-btn'  => carbon_get_post_meta( $id, 'service-welcome-utp-image-btn' ),
-	'utp-image'  => carbon_get_post_meta( $id, 'service-welcome-utp-image-main' ),
+	'bgi'           => carbon_get_post_meta( $id, 'service-welcome-bgi' ),
+	'image'         => carbon_get_post_meta( $id, 'service-welcome-target' ),
+	'title'         => $title,
+	'items'         => carbon_get_post_meta( $id, 'service-welcome-items-wrap' ),
+	'blur'          => carbon_get_post_meta( $id, 'service-welcome-bgi-blur' ),
+	'general-items' => carbon_get_post_meta( $id, 'service-welcome-general-items-check' ),
+	'utp-title'     => carbon_get_post_meta( $id, 'service-welcome-utp-title' ),
+	'utp-desc'      => carbon_get_post_meta( $id, 'service-welcome-utp-desc' ),
+	'utp-img-btn'   => carbon_get_post_meta( $id, 'service-welcome-utp-image-btn' ),
+	'utp-image'     => carbon_get_post_meta( $id, 'service-welcome-utp-image-main' ),
+	'turbo'         => $turbo,
 );
 echo get_template_part( 'template-parts/service', 'welcome', $params );
 ?>
@@ -63,7 +75,7 @@ echo get_template_part( 'template-parts/service', 'welcome', $params );
 <?php
 /** Вызов динамичных блоков */
 $fields  = carbon_get_post_meta( $id, 'service-blocks-wrap' );
-$content = new ConstructPage( $fields );
+$content = new ConstructPage( $fields, $turbo );
 $content->blocksAssembly();
 //?>
 
@@ -72,9 +84,16 @@ $content->blocksAssembly();
 /** Подключение "других услуг" */
 echo get_template_part( 'template-parts/service', 'more-services', array( 'exception_id' => $id ) );
 
-/** Сеошные услуги */
-echo get_template_part( 'template-parts/seo-services-links' );
+if ( ! $turbo ) {
+	/** Сеошные услуги */
+	echo get_template_part( 'template-parts/seo-services-links' );
+}
+
 ?>
 
 
-<?php get_footer(); ?>
+<?php
+if ( ! $turbo ) {
+	get_footer();
+}
+?>

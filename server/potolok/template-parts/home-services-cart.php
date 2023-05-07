@@ -1,5 +1,5 @@
 <?php
-$page_id = isset( $args['page-id'] ) ? $args['page-id'] : get_the_ID();
+$page_id = $args['page-id'] ?? get_the_ID();
 ?>
 
 <section class="services">

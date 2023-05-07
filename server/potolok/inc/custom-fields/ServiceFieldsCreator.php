@@ -143,7 +143,14 @@ class ServiceFieldsCreator {
                     <%- service_home_rules_item_title %>
                 <% } %>
             ' ),
-			Field::make( 'rich_text', 'service-home-rules-item-more', 'Послесловие' ),
+			Field::make( 'rich_text', 'service-home-rules-item-more', 'Послесловие' )
+				->set_conditional_logic( array(
+					array(
+						'field' => 'service-blocks-wrap-select',
+						'value' => 'home-rules',
+					)
+				) )
+			,
 		);
 	}
 
