@@ -87,9 +87,7 @@ $page_id = isset( $args['page-id'] ) ? $args['page-id'] : get_the_ID();
 								   class="product-info__link text-btns__link">
 									<?php echo __( 'Подробнее', 'potolok' ) ?>
 								</a>
-								<?php $phone = carbon_get_theme_option( 'settings-cont-tel' ) ?>
-								<a href="tel:<?php echo formatPhone( $phone ); ?>"
-								   class="btn--no-form btn-phone"><?php echo __( 'Позвонить', 'potolok' ) ?></a>
+								<?= get_template_part( 'template-parts/buttons/phone', 'link' ) ?>
 							</div>
 						</div>
 					</div>

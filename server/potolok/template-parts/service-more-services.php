@@ -1,18 +1,21 @@
 <?php
 
-$exception_id = array_key_exists( 'exception_id', $args ) ? $args['exception_id'] : false;
-$title        = array_key_exists( 'title', $args ) ? $args['title'] : false;
+$exception_id = $args['exception_id'] ?? false;
+$title        = $args['title'] ?? false;
+$turbo        = $args['turbo'] ?? false;
 ?>
 
 <section class="other-services">
 	<div class="container">
-		<h2 class="title--small">
-			<?php if ( $title ): ?>
-				<?php echo __( $title, 'potolok' ) ?>
-			<?php else: ?>
-				<?php echo __( 'Другие услуги', 'potolok' ) ?>
-			<?php endif; ?>
-		</h2>
+		<?php if ( ! $turbo ): ?>
+			<h2 class="title--small">
+				<?php if ( $title ): ?>
+					<?php echo __( $title, 'potolok' ) ?>
+				<?php else: ?>
+					<?php echo __( 'Другие услуги', 'potolok' ) ?>
+				<?php endif; ?>
+			</h2>
+		<?php endif; ?>
 		<div class="other-services__body">
 			<div class="other-services__other-items">
 
@@ -43,9 +46,14 @@ $title        = array_key_exists( 'title', $args ) ? $args['title'] : false;
 							</div>
 						</div>
 						<div class="other-items__item-buttons">
-							<button class="other-items__item-application cart-btn">
-								<?php echo __( 'Заявка', 'potolok' ) ?>
-							</button>
+							<?php if ( ! $turbo ): ?>
+								<button class="other-items__item-application cart-btn" type="button" formaction="#">
+									<?php echo __( 'Заявка', 'potolok' ) ?>
+								</button>
+							<?php else: ?>
+								<?= get_template_part( 'template-parts/buttons/phone', 'link' ) ?>
+							<?php endif; ?>
+
 							<a href="<?php echo get_permalink( $page_id ) ?>"
 							   class="other-items__item-more cart-btn--form">
 								<?php echo __( 'Подробнее', 'potolok' ) ?>
