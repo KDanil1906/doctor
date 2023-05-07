@@ -1,4 +1,7 @@
-<?php $data = $args['data']; ?>
+<?php
+$data  = $args['data'] ?? false;
+$turbo = $args['turbo'] ?? false;
+?>
 
 <section class="actions">
 	<div class="container">
@@ -28,11 +31,11 @@
 						<?php endif; ?>
 						<div class="item-must-do-wrapper__items">
 							<?php foreach ( $data['what-do-do'] as $do ): ?>
-								<div class="actions__carts-item__item">
-									<div class="actions__carts-item-title">
+								<ul class="actions__carts-item__item">
+									<li class="actions__carts-item-title">
 										<?php echo $do['what-do-do-title'] ?>
-									</div>
-								</div>
+									</li>
+								</ul>
 							<?php endforeach; ?>
 						</div>
 					</div>
@@ -48,11 +51,11 @@
 						<?php endif; ?>
 						<div class="item-not-do-wrapper__items">
 							<?php foreach ( $data['what-do-not-do'] as $not_do ): ?>
-								<div class="actions__carts-item__item">
-									<div class="actions__carts-item-title">
+								<ul class="actions__carts-item__item">
+									<li class="actions__carts-item-title">
 										<?php echo $not_do['what-do-not-do-title'] ?>
-									</div>
-								</div>
+									</li>
+								</ul>
 							<?php endforeach; ?>
 						</div>
 					</div>
@@ -67,11 +70,11 @@
 						<?php endif; ?>
 						<div class="item-we-do-wrapper__items">
 							<?php foreach ( $data['what-do-we-do'] as $not_do ): ?>
-								<div class="actions__carts-item__item">
-									<div class="actions__carts-item-title">
+								<ul class="actions__carts-item__item">
+									<li class="actions__carts-item-title">
 										<?php echo $not_do['what-do-we-do-title'] ?>
-									</div>
-								</div>
+									</li>
+								</ul>
 							<?php endforeach; ?>
 						</div>
 					</div>
@@ -83,17 +86,19 @@
 						</h3>
 						<div class="item-more-do-wrapper__items">
 							<?php foreach ( $data['what-do-more-do'] as $not_do ): ?>
-								<div class="actions__carts-item__item">
-									<div class="actions__carts-item-title">
+								<ul class="actions__carts-item__item">
+									<li class="actions__carts-item-title">
 										<?php echo $not_do['what-do-more-do-title'] ?>
-									</div>
-								</div>
+									</li>
+								</ul>
 							<?php endforeach; ?>
 						</div>
 					</div>
 				<?php endif; ?>
 			</div>
-			<?php echo get_template_part( 'template-parts/button', 'order' ) ?>
+			<?php if ( ! $turbo ): ?>
+				<?php echo get_template_part( 'template-parts/button', 'order' ) ?>
+			<?php endif; ?>
 		</div>
 	</div>
 </section>

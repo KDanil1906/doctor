@@ -11,7 +11,7 @@ function yturbo_acf_template( $content ) {
 
 				/** Шаблон отдельных страниц услуг */
 				if ( $template_name == 'page-services.php' ) {
-					$content = str_replace( $r, get_template_part( 'page', 'services', array( 'turbo' => true ) ), $content );
+					$content = str_replace( $r, get_template_part( 'page', 'services', array( 'turbo' => true )  ), $content );
 				}
 
 

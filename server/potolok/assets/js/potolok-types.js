@@ -6,13 +6,6 @@ function initPorolokTypesBlock() {
     jQuery('.ustanovka-tabs__wrapper .tab').on('click', function (event) {
         let id = jQuery(this).attr('data-id');
 
-        // jQuery('.ustanovka-tabs__wrapper .active-tab').hide();
-        // jQuery('.ustanovka-tabs__wrapper .active-tab').removeClass('active-tab');
-        // jQuery('.ustanovka-tabs__wrapper .tab.active').removeClass('active');
-        //
-        // jQuery(this).addClass('active');
-        // jQuery('#' + id).addClass('active-tab').fadeIn();
-
         jQuery(this).parent('.tabs').siblings('.tab_content').find(`.tab-item.active-tab`).hide();
         jQuery(this).parent('.tabs').siblings('.tab_content').find(`.tab-item.active-tab`).removeClass('active-tab');
         jQuery(this).siblings('.tab.active').removeClass('active');

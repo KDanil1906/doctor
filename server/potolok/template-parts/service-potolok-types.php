@@ -1,4 +1,6 @@
-<?php $data = $args['data'];
+<?php
+$data  = $args['data'];
+$turbo = $args['turbo'] ?? false;
 ?>
 
 <section class="ustanovka">
@@ -25,46 +27,52 @@
 			<?php if ( $items ): ?>
 				<div class="ustanovka__items">
 					<div class="ustanovka-tabs__wrapper">
-						<div class="tabs">
-							<?php
-							$counter = 0;
-							$data_id = 'potolok-';
-							foreach ( $items as $item ): ?>
-
-								<span class="tab <?= $counter == 0 ? 'active' : ''; ?>"
-								      data-id="<?= $data_id . $counter ?>"><?= $item['potolok-type-name']; ?></span>
-
-								<?php
-								$counter ++;
-							endforeach; ?>
-						</div>
-						<div class="tab_content">
-							<div class="tab_content__mobile-links">
+						<?php if ( ! $turbo ): ?>
+							<div class="tabs">
 								<?php
 								$counter = 0;
 								$data_id = 'potolok-';
-								foreach ( $items as $item ):
-									$image = $item['potolok-type-mobile-image']
-									?>
-									<a href="#" class="btn--show-service-info" data-block="<?= $data_id . $counter ?>">
-										<img
-											data-src="<?= LOADING_IMAGE?>"
-											data-lazy="<?php echo carbonImageData( $image )['url'] ?>"
-										     alt="<?php echo carbonImageData( $image )['alt'] ?>" loading="lazy">
-										<div class="show-service-info__text">
-											<div class="show-service-info__title">
-												<?= $item['potolok-type-full-name'] ?>
-											</div>
-											<div class="show-service-info__price">
-												<span>цена с установкой</span>
-												<div class="show-service-info__coast">
-													<?= $item['potolok-type-price'] ?> руб/м2
+								foreach ( $items as $item ): ?>
+
+									<span class="tab <?= $counter == 0 ? 'active' : ''; ?>"
+									      data-id="<?= $data_id . $counter ?>"><?= $item['potolok-type-name']; ?></span>
+
+									<?php
+									$counter ++;
+								endforeach; ?>
+							</div>
+						<?php endif; ?>
+						<div class="tab_content">
+							<?php if ( ! $turbo ): ?>
+								<div class="tab_content__mobile-links">
+									<?php
+									$counter = 0;
+									$data_id = 'potolok-';
+									foreach ( $items as $item ):
+										$image = $item['potolok-type-mobile-image']
+										?>
+										<a href="#" class="btn--show-service-info"
+										   data-block="<?= $data_id . $counter ?>">
+											<img
+												data-src="<?= LOADING_IMAGE ?>"
+												data-lazy="<?php echo carbonImageData( $image )['url'] ?>"
+												alt="<?php echo carbonImageData( $image )['alt'] ?>"
+												loading="lazy">
+											<div class="show-service-info__text">
+												<div class="show-service-info__title">
+													<?= $item['potolok-type-full-name'] ?>
+												</div>
+												<div class="show-service-info__price">
+													<span>цена с установкой</span>
+													<div class="show-service-info__coast">
+														<?= $item['potolok-type-price'] ?> руб/м2
+													</div>
 												</div>
 											</div>
-										</div>
-									</a>
-								<?php endforeach; ?>
-							</div>
+										</a>
+									<?php endforeach; ?>
+								</div>
+							<?php endif; ?>
 							<?php
 							$counter = 0;
 							$data_id = 'potolok-';
@@ -77,20 +85,36 @@
 									<div class="ustanovka-box">
 										<div class="ustanovka-box__slider">
 											<div class="ustanovka-box__slider-wrap">
-												<?php foreach ( $item['potolok-type-images'] as $image ): ?>
+												<?php if ( $turbo ):
+													$image = $item['potolok-type-images'][0];
+													?>
 													<a href="<?php echo carbonImageData( $image )['url'] ?>">
 														<img
-															data-src="<?= LOADING_IMAGE?>"
-															data-lazy="<?php echo carbonImageData( $image )['url'] ?>"
-															alt="<?php echo carbonImageData( $image )['alt'] ?>" loading="lazy">
+															src="<?php echo carbonImageData( $image )['url'] ?>"
+															alt="<?php echo carbonImageData( $image )['alt'] ?>"
+															loading="lazy">
 													</a>
-												<?php endforeach; ?>
+												<?php else: ?>
+													<?php foreach ( $item['potolok-type-images'] as $image ): ?>
+														<a href="<?php echo carbonImageData( $image )['url'] ?>">
+															<img
+																data-src="<?= LOADING_IMAGE ?>"
+																data-lazy="<?php echo carbonImageData( $image )['url'] ?>"
+																alt="<?php echo carbonImageData( $image )['alt'] ?>"
+																loading="lazy">
+														</a>
+													<?php endforeach; ?>
+												<?php endif; ?>
+
+
 											</div>
-											<div class="ustanovka-box__slider-counter">
-												<span class="slider-counter--current">1</span>
-												<span class="slider-counter--sep">/</span>
-												<span class="slider-counter--all"></span>
-											</div>
+											<?php if ( ! $turbo ): ?>
+												<div class="ustanovka-box__slider-counter">
+													<span class="slider-counter--current">1</span>
+													<span class="slider-counter--sep">/</span>
+													<span class="slider-counter--all"></span>
+												</div>
+											<?php endif; ?>
 										</div>
 										<div class="ustanovka-box__info">
 											<h3 class="ustanovka-box__info-title">
@@ -106,21 +130,29 @@
 												</div>
 											</div>
 											<div class="ustanovka-box__info-bnt">
-												<a class="btn--white measuring-form"
-												   type="submit"><?= __( 'Записаться на замер', 'potolok' ) ?></a>
+												<?php if ( $turbo ): ?>
+													<?= get_template_part( 'template-parts/buttons/phone', 'link' ) ?>
+												<?php else: ?>
+													<a class="btn--white measuring-form"
+													   type="submit"><?= __( 'Записаться на замер', 'potolok' ) ?></a>
+												<?php endif; ?>
+
 											</div>
 										</div>
-										<?php if ( count( $item['potolok-type-images'] ) > 1 ): ?>
-											<div class="ustanovka-box__slider-nav">
-												<?php foreach ( $item['potolok-type-images'] as $image ): ?>
-													<div class="ustanovka-box__info-img">
-														<img
-															data-src="<?= LOADING_IMAGE?>"
-															data-lazy="<?php echo carbonImageData( $image )['url'] ?>"
-														     alt="<?php echo carbonImageData( $image )['alt'] ?>" loading="lazy">
-													</div>
-												<?php endforeach; ?>
-											</div>
+										<?php if ( ! $turbo ): ?>
+											<?php if ( count( $item['potolok-type-images'] ) > 1 ): ?>
+												<div class="ustanovka-box__slider-nav">
+													<?php foreach ( $item['potolok-type-images'] as $image ): ?>
+														<div class="ustanovka-box__info-img">
+															<img
+																data-src="<?= LOADING_IMAGE ?>"
+																data-lazy="<?php echo carbonImageData( $image )['url'] ?>"
+																alt="<?php echo carbonImageData( $image )['alt'] ?>"
+																loading="lazy">
+														</div>
+													<?php endforeach; ?>
+												</div>
+											<?php endif; ?>
 										<?php endif; ?>
 									</div>
 								</div>

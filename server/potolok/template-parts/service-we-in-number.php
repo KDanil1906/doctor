@@ -3,10 +3,10 @@ $block_title      = carbon_get_theme_option( 'we-in-number-title' );
 $block_undertitle = carbon_get_theme_option( 'we-in-number-undertitle' );
 $block_elems      = carbon_get_theme_option( 'we-in-number-items' );
 $block_bgi        = carbonImageData( carbon_get_theme_option( 'we-in-number-bgi' ) );
-
+$turbo    = $args['turbo'] ?? false;
 ?>
 
-<?php if ( $block_elems ): ?>
+<?php if ( $block_elems && !$turbo ): ?>
 	<section class="we-in-number">
 		<div class="we-in-number__wrapper">
 			<div class="we-in-number__back-image">

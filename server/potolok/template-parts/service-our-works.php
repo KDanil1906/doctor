@@ -34,32 +34,35 @@ $turbo = $args['turbo'] ?? false;
 										</div>
 
 										<?php if ( $work['our-works-items-item-material'] ): ?>
-											<div class="item-descmore__items">
+											<ul class="item-descmore__items">
 												<?php foreach ( $work['our-works-items-item-material'] as $material ): ?>
-													<div class="item-descmore__item">
+													<li class="item-descmore__item">
 														<?php echo $material['our-works-items-item-material-item']; ?>
-													</div>
+													</li>
 												<?php endforeach; ?>
-											</div>
+											</ul>
 										<?php endif; ?>
 									</div>
 								</div>
 
-								<div class="works-item__btns">
-									<?php if ( !$turbo ): ?>
+								<?php if ( ! $turbo ): ?>
+									<div class="works-item__btns">
 										<button class="text-btns__link-btn btn">
 											<?php echo __( 'Хочу такой же', 'potolok' ) ?>
 										</button>
-									<?php endif; ?>
-								</div>
+									</div>
+								<?php endif; ?>
 							</div>
 							<?php if ( $work['our-works-items-item-images'] ): ?>
 								<div class="works-items__item-imagesbox">
 									<div class="works-items__item-images">
 										<?php
 										$work_images = $work['our-works-items-item-images'];
-										$counter     = 0; // счетчик элементов ?>
-										<?php foreach ( $work_images as $key => $image ): ?>
+
+										if ( ! $turbo ):
+											$counter = 0; // счетчик элементов
+											?>
+											<?php foreach ( $work_images as $key => $image ): ?>
 											<?php if ( $counter == 0 ): ?>
 												<div class="works-items__item-images-wrap">
 												<div class="works-items__item-images-box">
@@ -80,6 +83,14 @@ $turbo = $args['turbo'] ?? false;
 												</div>
 											<?php endif; ?>
 										<?php endforeach; ?>
+										<?php else: ?>
+											<?php
+											$image = $work_images[0]; ?>
+											<img src="<?php echo carbonImageData( $image )['url']; ?>"
+											     alt="<?php echo carbonImageData( $image )['alt']; ?>"
+											     loading="lazy">
+											<?= get_template_part( 'template-parts/buttons/phone', 'link' ) ?>
+										<?php endif; ?>
 									</div>
 								</div>
 							<?php endif; ?>

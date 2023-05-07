@@ -103,7 +103,7 @@ $turbo          = $args['turbo'] ?? false;
 					</div>
 				<?php endif; ?>
 
-				<?php if ( $blur ): ?>
+				<?php if ( $blur && $image && ! $turbo ): ?>
 					<div class="welcome-service__top-image-wrapper">
 						<div class="welcome-service__top-image">
 							<img src="<?php echo carbonImageData( $image )['url'] ?>"
