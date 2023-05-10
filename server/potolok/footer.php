@@ -150,15 +150,6 @@
     <?php echo do_shortcode( '[wpforms id="2682"]' ) ?>
 </div>
 
-<!--<section class="cookie">-->
-<!--    <div class="cookie-text">-->
-<!--		--><?php //echo apply_filters( 'the_content', carbon_get_theme_option( 'cookie-notif' ) ); ?>
-<!--    </div>-->
-<!--    <button class="cookie-btn">-->
-<!--		--><?php //echo __( 'Я понимаю', 'potolok' ) ?>
-<!--    </button>-->
-<!--</section>-->
-
 <?php wp_footer(); ?>
 <!-- Yandex.Metrika counter -->
 <script>

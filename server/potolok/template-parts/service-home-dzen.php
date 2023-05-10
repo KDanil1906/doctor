@@ -16,7 +16,7 @@ $dzen_photo = carbon_get_theme_option('main-dzen-photo');
                     <?php echo $undertitle; ?>
                 </div>
                 <div class="dzen__link">
-                    <a href="<?php echo $link;?>" class="btn--no-form" target="_blank">Читать матриалы в Дзене</a>
+                    <a href="<?php echo $link;?>" class="btn--no-form" target="_blank">Читать материалы в Дзене</a>
                 </div>
             </div>
             <div class="dzen__image">
