@@ -71,6 +71,12 @@ $page_id = $args['page-id'] ?? get_the_ID();
 										</div>
 										<?php echo apply_filters( 'the_content', $needed ); ?>
 									<?php endif; ?>
+                                    <div class="cart-item__price">
+	                                    <?php $phone = carbon_get_theme_option( 'settings-cont-tel' ) ?>
+                                        <span class="cart-item__num">Стоимость услуги от: <span><?= carbon_get_post_meta( $post_id, 'service-general-price' );?> ₽</span></span>
+                                        <div class="cart-item__price-text">Точная стоимость по телефону
+                                            <a href="tel:<?php echo formatPhone( $phone ); ?>"><?php echo phoneDecorate( $phone ); ?></a></div>
+                                    </div>
 								</div>
 								<?php $warning = carbon_get_post_meta( $post_id, 'service-general-warning' ); ?>
 								<?php if ( $warning ): ?>

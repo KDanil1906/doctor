@@ -28,7 +28,7 @@ function checkOpenedMenus(elClass, menus) {
 
     menus.forEach(function (el) {
         let elClassList = jQuery(el).attr("class");
-        if (elClassList && !el.hasClass(elClass)) {
+        if (elClassList && !jQuery(el).hasClass(elClass)) {
             elClassList = elClassList.split(/\s+/);
             elClassList.forEach(function (cl) {
                 if (cl.indexOf("--opened") >= 0) {

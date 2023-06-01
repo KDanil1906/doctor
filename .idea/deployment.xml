@@ -6,6 +6,8 @@
         <serverdata>
           <mappings>
             <mapping deploy="/doctor-potolkov.ru/public_html/wp-content/themes/potolok" local="$PROJECT_DIR$/server/potolok" web="\" />
+            <mapping deploy="/doctor-potolkov.ru/public_html/wp-content/plugins/yml-for-yandex-market" local="$PROJECT_DIR$/server/yml-for-yandex-market" />
+            <mapping deploy="/kursk.ru/public_html/wp-content/themes/potolok" local="$PROJECT_DIR$/../kursk-potolok/kurks-wp/potolok" web="\" />
           </mappings>
         </serverdata>
       </paths>

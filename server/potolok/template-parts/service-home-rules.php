@@ -41,10 +41,14 @@ if ( $data['service-home-rules-item-more'] ) {
 					</div>
 					<?php $rule_counter ++; ?>
 				<?php endforeach; ?>
+                <div class="carts__items-more">
+                    <div class="carts__item-number">
+                        Заключение
+                    </div>
+					<?php echo apply_filters( 'the_content', $more ); ?>
+                </div>
 			</div>
-			<div class="carts__items-more">
-				<?php echo apply_filters( 'the_content', $more ); ?>
-			</div>
+
 		</div>
 	</div>
 </section>

@@ -32,7 +32,7 @@ $buy_link     = $args['buy_link'] ?? false;
 			<?php endif; ?>
 
 			<button
-				class="product-info__link text-btns__link">
+				class="product-info__link product-info__link--form text-btns__link ">
 				Подробнее
 			</button>
 		</div>

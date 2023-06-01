@@ -35,7 +35,9 @@ Container::make( 'post_meta', 'Контент на страничке' )
                 <% if (main_welcome_title_item) { %>
                     <%- main_welcome_title_item %>
                 <% } %>
-            ' )
+            ' ),
+	         Field::make( 'text', 'main-welcome-under-items', 'Под пунктами' )
+	              ->set_width( 100 ),
          ) )
          ->add_tab( 'Услуги', array(
 	         Field::make( 'rich_text', 'main-services-title', 'Заголовок' )
@@ -156,8 +158,12 @@ Container::make( 'post_meta', 'Контент карточек (отображе
 			              'value' => true,
 		              )
 	              ) ),
+	         Field::make( 'text', 'service-general-price', 'Цена услуги (от)' )
+	              ->set_width( 50 )
+	              ->set_attribute( 'type', 'number' )
+         ,
 	         Field::make( 'image', 'service-general-image', 'Изображение услуги' )
-	              ->set_width( 25 )
+	              ->set_width( 50 )
 	              ->set_conditional_logic( array(
 		              'relation' => 'OR', // Optional, defaults to "AND"
 		              array(

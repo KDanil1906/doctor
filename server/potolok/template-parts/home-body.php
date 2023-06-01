@@ -33,10 +33,13 @@ if ( $product ) {
 						<?php endforeach; ?>
 					</ul>
 				</div>
+                <div class="welcome__urder-items">
+	                <?= carbon_get_post_meta( $home_id, 'main-welcome-under-items' );?>
+                </div>
 				<div class="welcome__btn">
-					<a class="btn">
+					<button class="btn">
 						<?php echo __( 'Оставить заявку', 'potolok' ) ?>
-					</a>
+					</button>
 					<?php $phone = carbon_get_theme_option( 'settings-cont-tel' ) ?>
 					<a href="tel:<?php echo formatPhone( $phone ); ?>"
 					   class="btn--no-form btn-phone"><?php echo __( 'Позвонить', 'potolok' ) ?></a>

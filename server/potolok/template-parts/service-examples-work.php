@@ -18,7 +18,7 @@ $turbo = $args['turbo'] ?? false;
 				foreach ( $data['example-work-photo'] as $photo ):
 					?>
 					<?php if ( ! $turbo ): ?>
-					<a href="<?php echo carbonImageData( $photo )['url']; ?>" class="example-works__item fancybox">
+					<a href="<?php echo carbonImageData( $photo )['url']; ?>" class="example-works__item">
 						<img
 							data-src="<?= LOADING_IMAGE ?>"
 							data-lazy="<?php echo carbonImageData( $photo )['url']; ?>"

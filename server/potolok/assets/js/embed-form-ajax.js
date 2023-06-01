@@ -1,4 +1,4 @@
-import {initFormInput, processingPopupShow} from "./form.js";
+import {initFormInput, processingPopupShow, checkRequiredFields, yandexFormsGoals} from "./form.js";
 import {mutedBody} from "./functions.js";
 
 function pasteForm(formName, form_selector, btn, productName = '') {
@@ -16,6 +16,10 @@ function pasteForm(formName, form_selector, btn, productName = '') {
     jQuery.post(ajaxurl, data, function (response) {
         jQuery('.loader').remove();
         jQuery($body_place).append(response);
+
+        checkRequiredFields();
+        yandexFormsGoals();
+
 
         jQuery('.wpforms-field-hidden input[id*="wpforms"]').val(productName);
 

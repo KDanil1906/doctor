@@ -3,7 +3,7 @@
 <?php if ( $products->have_posts() ): ?>
 	<section class="products">
 		<div class="container">
-			<div class="title--middle clients__title">
+			<div class="title--small clients__title">
 				Комплектующие
 			</div>
 			<div class="under-middle-title__desc">

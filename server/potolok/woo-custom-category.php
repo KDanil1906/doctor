@@ -21,20 +21,24 @@ $loop     = new WP_Query( $args );
 
 
 <div class="services-links">
-	<div class="container">
-		<div class="services-links__inner">
-			<div class="services-links__services">
-				<?php foreach ( $loop->posts as $item ): ?>
-					<a href="<?php echo get_permalink( $item->ID ) ?>"
-					   class="services-links__item"><?php echo $item->post_title; ?></a>
-				<?php endforeach; ?>
-			</div>
-			<?=  get_template_part( 'template-parts/pagination', '', array( 'query' => $loop ) ); ?>
-		</div>
+    <div class="container">
 
-	</div>
+        <div class="services-links__inner">
+            <div class="services-links__services">
+				<?php foreach ( $loop->posts as $item ): ?>
+                    <a href="<?php echo get_permalink( $item->ID ) ?>"
+                       class="services-links__item"><?php echo $item->post_title; ?></a>
+				<?php endforeach; ?>
+            </div>
+			<?= get_template_part( 'template-parts/pagination', '', array( 'query' => $loop ) ); ?>
+        </div>
+
+    </div>
 </div>
 
-<a href="#" class="to-back-btn"></a>
+
+<?php if ( isset( $_SERVER['HTTP_REFERER'] ) ) : ?>
+    <a href="<?= $_SERVER['HTTP_REFERER'] ?>" class="to-back-btn"></a>
+<?php endif; ?>
 
 <?php get_footer(); ?>

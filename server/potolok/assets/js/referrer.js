@@ -1,12 +1,18 @@
 jQuery(document).ready(function () {
-    let previousPageUrl = document.referrer;
+    // Редирект страницы "спасибо"
+    let href = window.location.href;
 
-    if (previousPageUrl) {
-        let btn_back = jQuery('.to-back-btn');
-        if (btn_back) {
-            jQuery(btn_back).attr('href', previousPageUrl);
-        } else {
-            jQuery(btn_back).remove();
+    if (href.indexOf("spasibo") >= 0) {
+
+        let domain = href.split('/');
+        let refer = `${domain[0]}//${domain[2]}`
+
+        if (document.referrer && document.referrer !== '' && href !== document.referrer) {
+            refer = document.referrer;
         }
+
+        setTimeout(function () {
+            window.location.href = refer;
+        }, 3000)
     }
 })

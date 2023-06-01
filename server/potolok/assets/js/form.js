@@ -1,6 +1,6 @@
 /** Form mask start */
 import {mutedBody, clickOverElement} from "./functions.js";
-import {form_btns} from "./vars.js";
+import {form_btns, form_selectors} from "./vars.js";
 import {pasteForm} from "./embed-form-ajax.js";
 
 function initFormInput() {
@@ -77,4 +77,85 @@ function checkAjaxForm(form_selector) {
     return ~form_selector.indexOf("--ajax")
 }
 
-export {initFormInput, handlingPopupShow, processingPopupShow, checkAjaxForm};
+// проверка валидации полей и активация кнопки "отправить"
+function checkRequiredFields() {
+    let forms = jQuery('form.wpforms-form');
+
+    jQuery(forms).each(function () {
+        if (jQuery(this).length) {
+
+            jQuery(this).find('.wpforms-submit').addClass('submit--off');
+
+            let required_fields = jQuery(this).find('.wpforms-field-required');
+            jQuery(required_fields).each(function () {
+
+                jQuery(this).on('input', function () {
+
+                    let check = checkInputValue(required_fields);
+                    let form = jQuery(this).parent('.wpforms-field').parent('.wpforms-field-container').parent('form');
+                    let submit_btn = jQuery(form).find('.wpforms-submit');
+
+                    if (check.every(v => v === true)) {
+                        jQuery(submit_btn).removeClass('submit--off');
+                        jQuery(submit_btn).addClass('submit--on');
+                    } else {
+                        jQuery(submit_btn).removeClass('submit--on');
+                        jQuery(submit_btn).addClass('submit--off');
+                    }
+                })
+
+            })
+        }
+    })
+}
+
+
+
+function checkInputValue(required_inputs) {
+    let values = [];
+
+    jQuery(required_inputs).each(function () {
+        let type = jQuery(this).attr('type');
+        let value = jQuery(this).val();
+        let checker = false;
+
+        if (type == 'tel') {
+            let clean_value = value.replaceAll('-', '').replaceAll('+', '');
+
+            if (clean_value.length === 11) {
+                for (let i = 0; i < clean_value.length; i++) {
+                    if (!isNaN(parseInt(clean_value[i]))) {
+                        checker = true;
+                    } else {
+                        checker = false;
+                        break;
+                    }
+                }
+            }
+        } else {
+            if (value !== '') {
+                checker = true;
+            }
+        }
+
+        values.push(checker);
+    })
+
+    return values;
+}
+
+// Событие отправления формы
+function yandexFormsGoals() {
+    form_selectors.forEach(function (selector, index) {
+        let forms = jQuery(selector);
+        if (jQuery(forms).length) {
+            jQuery(forms).each(function (el) {
+                jQuery(this).on('wpformsAjaxSubmitSuccess', function (e, response) {
+                    ym(53113441, 'reachGoal', 'sendForm'`sendForm${index + 1}`)
+                });
+            })
+        }
+    })
+}
+
+export {initFormInput, handlingPopupShow, processingPopupShow, checkAjaxForm, checkRequiredFields, yandexFormsGoals};

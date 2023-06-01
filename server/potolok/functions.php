@@ -5,6 +5,9 @@
 //	'remont-natyazhnogo-potolka' => 36
 //];
 
+/** Деббагер */
+require_once get_stylesheet_directory() . '/inc/debug/debug-functions.php';
+
 /** Различные настройки WP */
 require_once get_stylesheet_directory() . '/inc/settings.php';
 
@@ -90,8 +93,13 @@ require_once get_stylesheet_directory() . '/inc/form-ajax.php';
 add_action( 'carbon_fields_register_fields', 'product_seo' );
 function product_seo() {
 	require_once get_stylesheet_directory() . '/inc/seo-set-product-desc.php';
+	require_once get_stylesheet_directory() . '/inc/woo/seo-hooks.php';
+
+
 }
 
+/** Функции Yoast  */
+require_once get_stylesheet_directory() . '/inc/yoast-changes.php';
 
 
 
