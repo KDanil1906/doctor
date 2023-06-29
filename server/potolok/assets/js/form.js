@@ -1,6 +1,6 @@
 /** Form mask start */
 import {mutedBody, clickOverElement} from "./functions.js";
-import {form_btns, form_selectors} from "./vars.js";
+import {form_btns} from "./vars.js";
 import {pasteForm} from "./embed-form-ajax.js";
 
 function initFormInput() {
@@ -21,7 +21,6 @@ function initFormInput() {
             } else {
                 mask = '0-000-000-00-00';
             }
-
             jQuery('input[type=tel]').mask(mask, options);
         }
     };
@@ -110,7 +109,6 @@ function checkRequiredFields() {
 }
 
 
-
 function checkInputValue(required_inputs) {
     let values = [];
 
@@ -144,18 +142,12 @@ function checkInputValue(required_inputs) {
     return values;
 }
 
-// Событие отправления формы
-function yandexFormsGoals() {
-    form_selectors.forEach(function (selector, index) {
-        let forms = jQuery(selector);
-        if (jQuery(forms).length) {
-            jQuery(forms).each(function (el) {
-                jQuery(this).on('wpformsAjaxSubmitSuccess', function (e, response) {
-                    ym(53113441, 'reachGoal', 'sendForm'`sendForm${index + 1}`)
-                });
-            })
-        }
-    })
-}
 
-export {initFormInput, handlingPopupShow, processingPopupShow, checkAjaxForm, checkRequiredFields, yandexFormsGoals};
+
+export {
+    initFormInput,
+    handlingPopupShow,
+    processingPopupShow,
+    checkAjaxForm,
+    checkRequiredFields,
+};

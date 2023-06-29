@@ -70,6 +70,7 @@ $turbo = $args['turbo'] ?? false;
 												</div>
 											</div>
 										</a>
+										<?php $counter ++;?>
 									<?php endforeach; ?>
 								</div>
 							<?php endif; ?>

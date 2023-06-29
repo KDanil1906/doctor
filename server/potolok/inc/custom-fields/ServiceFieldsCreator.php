@@ -144,12 +144,12 @@ class ServiceFieldsCreator {
                 <% } %>
             ' ),
 			Field::make( 'rich_text', 'service-home-rules-item-more', 'Послесловие' )
-				->set_conditional_logic( array(
-					array(
-						'field' => 'service-blocks-wrap-select',
-						'value' => 'home-rules',
-					)
-				) )
+			     ->set_conditional_logic( array(
+				     array(
+					     'field' => 'service-blocks-wrap-select',
+					     'value' => 'home-rules',
+				     )
+			     ) )
 			,
 		);
 	}
@@ -673,6 +673,24 @@ class ServiceFieldsCreator {
 					     'value' => 'more-info',
 				     )
 			     ) ),
+			Field::make( 'media_gallery', 'more-info-video', __( 'Видео' ) )
+			     ->set_type( array( 'video' ) )
+			     ->set_conditional_logic( array(
+				     array(
+					     'field' => 'service-blocks-wrap-select',
+					     'value' => 'more-info',
+				     )
+			     ) )
+			,
+			Field::make( 'image', 'more-info-video-preload', __( 'Прелоад видео' ) )
+			     ->set_type( array( 'video' ) )
+			     ->set_conditional_logic( array(
+				     array(
+					     'field' => 'service-blocks-wrap-select',
+					     'value' => 'more-info',
+				     )
+			     ) )
+			,
 			Field::make( 'textarea', 'more-info-desc', 'Описание' )
 			     ->set_width( 33 )
 			     ->set_rows( 3 )
@@ -692,6 +710,14 @@ class ServiceFieldsCreator {
 				     )
 			     ) ),
 			Field::make( 'image', 'more-info-image', 'Изображение' )
+			     ->set_width( 100 )
+			     ->set_conditional_logic( array(
+				     array(
+					     'field' => 'service-blocks-wrap-select',
+					     'value' => 'more-info',
+				     )
+			     ) ),
+			Field::make( 'rich_text', 'more-info-image-text', 'Подпись к изображению' )
 			     ->set_width( 100 )
 			     ->set_conditional_logic( array(
 				     array(

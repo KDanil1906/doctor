@@ -102,4 +102,7 @@ function product_seo() {
 require_once get_stylesheet_directory() . '/inc/yoast-changes.php';
 
 
+/** Автоматическое создание сеошных товаров на основании xlsx  */
+require_once get_stylesheet_directory() . '/inc/classes/autoload.php';
+
 

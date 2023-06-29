@@ -73,7 +73,7 @@ echo get_template_part( 'template-parts/service', 'welcome', $params );
 ?>
 
 <?php
-/** Вызов динамичных блоков */
+/** Вызов динамических блоков */
 $fields  = carbon_get_post_meta( $id, 'service-blocks-wrap' );
 $content = new ConstructPage( $fields, $turbo );
 $content->blocksAssembly();

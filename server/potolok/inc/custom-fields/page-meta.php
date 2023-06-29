@@ -8,8 +8,6 @@ use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 
 require_once get_stylesheet_directory() . '/inc/custom-fields/ServiceFieldsCreator.php';
-
-
 $service_fields = new ServiceFieldsCreator();
 
 Container::make( 'post_meta', 'Контент на страничке' )

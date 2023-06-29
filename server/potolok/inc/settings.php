@@ -13,6 +13,7 @@ add_filter( 'upload_mimes', 'svg_upload_allow' );
 # Добавляет SVG в список разрешенных для загрузки файлов.
 function svg_upload_allow( $mimes ) {
 	$mimes['svg'] = 'image/svg+xml';
+	$mimes['mp4'] = 'video/mp4';
 
 	return $mimes;
 }
@@ -43,9 +44,7 @@ function fix_svg_mime_type( $data, $file, $filename, $mimes, $real_mime = '' ) {
 		else {
 			$data['ext'] = $type_and_ext['type'] = false;
 		}
-
 	}
-
 	return $data;
 }
 
@@ -67,4 +66,5 @@ add_filter( 'use_block_editor_for_post', '__return_false' );
 
 define( 'LOADING_IMAGE', get_stylesheet_directory_uri() . '/assets/images/webp_image/image-loading.webp' );
 
-
+//Woocommerve
+add_theme_support('woocommerce');

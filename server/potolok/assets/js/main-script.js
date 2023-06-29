@@ -1,18 +1,16 @@
-import {initFormInput, handlingPopupShow, checkRequiredFields, yandexFormsGoals} from "./form.js";
+import {initFormInput, handlingPopupShow, checkRequiredFields} from "./form.js";
 import {initSliders} from "./sliders.js";
 import {initHeaderHandling} from "./header.js";
-// import {galleryShowMoreBtn} from "./buttons.js";
 import {runLinksInit} from "./run_links.js";
 import {infoCoockie} from "./coockie.js";
 import {fancyBoxOn, applyFancyGallery} from "./fancybox.js";
 import {initPorolokTypesBlock} from "./potolok-types.js";
 import {numberAnimnate} from "./animations.js";
 import {utpBlockHandler} from "./utp-handler.js";
-import {form_selectors} from "./vars.js";
-
 
 jQuery(document).ready(function ($) {
     fancyBoxOn();
+
 
     /** Init start */
     let $window = $(window);
@@ -45,19 +43,20 @@ jQuery(document).ready(function ($) {
     }
 
     // Цель яндекс метрики "отправление формы"
-    yandexFormsGoals();
 
     // Цель яндекс метрики "клик по звонку"
-    if ($(window).innerWidth <= 768) {
-        $('a[href*="tel:"]').on('click', function () {
-            ym(53113441, 'reachGoal', 'clickCall')
-        })
-    }
+    $('a[href*="tel:"]').on('click', function () {
+        ym(53113441, 'reachGoal', 'clickPhone');
+    })
 
     $('a[href*="https://api.whatsapp.com/send/"]').on('click', function () {
         ym(53113441, 'reachGoal', 'whatsAppClick');
     })
 
+    // Событие отправления формы
+    if (window.location.href.indexOf("/spasibo") >= 0) {
+        ym(53113441, 'reachGoal', 'sendForm');
+    }
 
     $('a[href*="https://t.me/"]').on('click', function () {
         ym(53113441, 'reachGoal', 'clickTelegram')

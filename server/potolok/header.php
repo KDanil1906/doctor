@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="yandex-verification" content="3261b536b79df074"/>
-	<?php if ( is_404() ): ?>
+
+    <?php if ( is_404() ): ?>
         <meta name="description" content="Страница не найдена - Доктор Потолков"/>
         <link rel="canonical" href="<?php echo home_url(); ?>"/>
 	<?php endif; ?>

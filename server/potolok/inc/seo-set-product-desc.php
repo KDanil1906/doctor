@@ -34,18 +34,20 @@ function associateCategoriesArticles() {
 		$products = $wpdb->get_results(
 			$wpdb->prepare(
 				"SELECT p.*
-				FROM {$wpdb->posts} p
-				JOIN {$wpdb->term_relationships} tr ON p.ID = tr.object_id
-				JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
-				JOIN {$wpdb->terms} t ON tt.term_id = t.term_id
-				WHERE p.post_type = 'product'
-				AND p.post_status = 'publish'
-				AND tt.taxonomy = 'product_cat'
-				AND t.slug = %s
-				ORDER BY p.menu_order ASC, p.post_title ASC",
+        FROM {$wpdb->posts} p
+        JOIN {$wpdb->term_relationships} tr ON p.ID = tr.object_id
+        JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+        JOIN {$wpdb->terms} t ON tt.term_id = t.term_id
+        WHERE p.post_type = 'product'
+        AND p.post_status = 'publish'
+        AND tt.taxonomy = 'product_cat'
+        AND t.slug = %s
+        ORDER BY p.menu_order ASC, p.post_title ASC",
 				$category_slug
 			)
 		);
+
+
 
 		// Вычисляем количество товаров, приходящихся на каждую статью
 		$number_products_for_article = ceil( count( $products ) / count( $category_articles ) );

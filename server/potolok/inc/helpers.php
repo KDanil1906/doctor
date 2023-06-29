@@ -65,7 +65,12 @@ if ( ! function_exists( 'get_num_ending' ) ) {
 					$ending = $ending_array[2];
 			}
 		}
-		
+
 		return $ending;
 	}
+}
+
+function debug( $data ) {
+	$file_path = get_template_directory() . '/inc/debug.json';
+	file_put_contents( $file_path, json_encode( $data, JSON_UNESCAPED_UNICODE ) . PHP_EOL, FILE_APPEND );
 }

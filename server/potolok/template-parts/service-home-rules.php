@@ -1,19 +1,13 @@
 <?php
-$data            = isset( $args['data'] ) ? $args['data'] : false;
 $title           = carbon_get_theme_option( 'main-rules-title' );
 $rules           = carbon_get_theme_option( 'main-rules-rules' );
+
 $rule_title_slug = 'main-rules-rule-title';
 $rule_desc_slug  = 'main-rules-rule-desc';
-if ( $data['service-home-rules-items'] ) {
-	$rules           = $data['service-home-rules-items'];
-	$rule_title_slug = 'service-home-rules-item-title';
-	$rule_desc_slug  = 'service-home-rules-item-desc';
-}
+
 
 $more = carbon_get_theme_option( 'main-rules-more' );
-if ( $data['service-home-rules-item-more'] ) {
-	$more = $data['service-home-rules-item-more'];
-}
+
 ?>
 
 <section class="benefits">

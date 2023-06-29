@@ -63,7 +63,7 @@ function concatProductImages( $product_id ) {
 
 	$image_ids = array();
 
-	if (get_post_thumbnail_id( $product_id )) {
+	if ( get_post_thumbnail_id( $product_id ) ) {
 		$image_ids[] = get_post_thumbnail_id( $product_id );
 	}
 
@@ -90,7 +90,7 @@ function getProductAttrs( $product ) {
 
 			foreach ( $attribute_values as $attribute_value ) {
 				$value_name = esc_html( $attribute_value->name );
-				$values[] = trim($value_name, "\n\r\t\v\x00");
+				$values[]   = trim( $value_name, "\n\r\t\v\x00" );
 			}
 		}
 
@@ -101,4 +101,21 @@ function getProductAttrs( $product ) {
 	}
 
 	return $product_attributes;
+}
+
+/**
+ * @param $id
+ * Получает и возвращает данные о видео
+ *
+ * @return array
+ */
+function getVideoInfo( $id ) {
+
+	$video_url  = wp_get_attachment_url( $id ); // Получение URL видео
+	$video_type = get_post_mime_type( $id ); // Получение MIME-типа (type) видео
+
+	return array(
+		'url'  => $video_url,
+		'type' => $video_type
+	);
 }
